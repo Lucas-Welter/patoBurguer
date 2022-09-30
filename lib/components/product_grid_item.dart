@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:pato_burguer/models/cart.dart';
 import 'package:pato_burguer/models/product.dart';
 import 'package:pato_burguer/utils/app_routes.dart';
 
@@ -8,10 +9,8 @@ class ProductGridItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final product = Provider.of<Product>(
-      context,
-      listen: false,
-    );
+    final product = Provider.of<Product>(context, listen: false);
+    final cart = Provider.of<Cart>(context, listen: false);
 
     return ClipRRect(
       borderRadius: BorderRadius.circular(10),
@@ -33,9 +32,24 @@ class ProductGridItem extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           trailing: IconButton(
-            onPressed: () {},
             icon: const Icon(Icons.shopping_cart),
             color: Theme.of(context).colorScheme.secondary,
+            onPressed: () {
+              ScaffoldMessenger.of(context).hideCurrentSnackBar();
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: const Text('Produto adicionado com sucesso!'),
+                  duration: const Duration(seconds: 2),
+                  action: SnackBarAction(
+                    label: 'DESFAZER',
+                    onPressed: () {
+                      cart.removeSingleItem(product.id);
+                    },
+                  ),
+                ),
+              );
+              cart.addItem(product);
+            },
           ),
         ),
         child: GestureDetector(
