@@ -15,8 +15,8 @@ class AuthPage extends StatelessWidget {
             decoration: const BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  Color.fromRGBO(215, 117, 255, 0.5),
-                  Color.fromRGBO(255, 188, 117, 0.9),
+                  Color(0XFFFF9700),
+                  Color(0XFFFFC847),
                 ],
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
@@ -37,28 +37,7 @@ class AuthPage extends StatelessWidget {
                         vertical: 10,
                         horizontal: 70,
                       ),
-                      // cascade operator
-                      transform: Matrix4.rotationZ(-8 * pi / 180)
-                        ..translate(-10.0),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.deepOrange.shade900,
-                        boxShadow: const [
-                          BoxShadow(
-                            blurRadius: 8,
-                            color: Colors.black26,
-                            offset: Offset(0, 2),
-                          ),
-                        ],
-                      ),
-                      child: const Text(
-                        'Minha Loja',
-                        style: TextStyle(
-                          fontSize: 45,
-                          fontFamily: 'Anton',
-                          color: Colors.white,
-                        ),
-                      ),
+                      child: Image.asset('assets/images/Logo-Pato-Burguer.png'),
                     ),
                     const AuthForm(),
                   ],

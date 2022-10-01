@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:pato_burguer/models/auth.dart';
-import 'package:pato_burguer/pages/orders_page.dart';
 import 'package:pato_burguer/utils/app_routes.dart';
 import 'package:pato_burguer/utils/custom_route.dart';
 
@@ -25,19 +24,6 @@ class AppDrawer extends StatelessWidget {
               Navigator.of(context).pushReplacementNamed(
                 AppRoutes.authOrHome,
               );
-            },
-          ),
-          const Divider(),
-          ListTile(
-            leading: const Icon(Icons.payment),
-            title: const Text('Pedidos'),
-            onTap: () {
-              Navigator.of(context).pushReplacementNamed(
-                AppRoutes.orders,
-              );
-              // Navigator.of(context).pushReplacement(
-              //   CustomRoute(builder: (ctx) => const OrdersPage()),
-              // );
             },
           ),
           const Divider(),
