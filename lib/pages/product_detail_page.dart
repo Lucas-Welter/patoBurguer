@@ -6,6 +6,10 @@ import 'package:url_launcher/url_launcher_string.dart';
 class ProductDetailPage extends StatelessWidget {
   const ProductDetailPage({Key? key}) : super(key: key);
 
+  abrirLink(var linkUrl) async {
+    launchUrlString(linkUrl);
+  }
+
   @override
   Widget build(BuildContext context) {
     final Product product =
@@ -87,8 +91,8 @@ class ProductDetailPage extends StatelessWidget {
                   width: 100,
                   height: 100,
                   child: InkWell(
-                    onTap: () => launchUrlString(
-                        'https://api.whatsapp.com/send?phone=556740028922&text=Oi%2C%20vou%20querer%20fazer%20um%20pedido'),
+                    onTap: () =>
+                        abrirLink("whatsapp://send?phone=+556740028922"),
                     borderRadius: const BorderRadius.all(Radius.circular(12)),
                   ),
                 ),
@@ -102,9 +106,7 @@ class ProductDetailPage extends StatelessWidget {
                   width: 100,
                   height: 100,
                   child: InkWell(
-                    onTap: () => launchUrlString(
-                      'https://www.instagram.com/patoburguer_/',
-                    ),
+                    onTap: () => abrirLink(""),
                     borderRadius: const BorderRadius.all(Radius.circular(12)),
                   ),
                 ),
