@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import 'package:pato_burguer/components/app_drawer.dart';
 import 'package:pato_burguer/components/badge.dart';
 import 'package:pato_burguer/components/product_grid.dart';
-import 'package:pato_burguer/models/cart.dart';
 import 'package:pato_burguer/models/product_list.dart';
 import 'package:pato_burguer/utils/app_routes.dart';
 
@@ -41,42 +40,6 @@ class _ProductsOverviewPageState extends State<ProductsOverviewPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Minha Loja'),
-        actions: [
-          PopupMenuButton(
-            icon: const Icon(Icons.more_vert),
-            itemBuilder: (_) => [
-              const PopupMenuItem(
-                value: FilterOptions.favorite,
-                child: Text('Somente Favoritos'),
-              ),
-              const PopupMenuItem(
-                value: FilterOptions.all,
-                child: Text('Todos'),
-              ),
-            ],
-            onSelected: (FilterOptions selectedValue) {
-              setState(() {
-                if (selectedValue == FilterOptions.favorite) {
-                  _showFavoriteOnly = true;
-                } else {
-                  _showFavoriteOnly = false;
-                }
-              });
-            },
-          ),
-          Consumer<Cart>(
-            child: IconButton(
-              onPressed: () {
-                Navigator.of(context).pushNamed(AppRoutes.cart);
-              },
-              icon: const Icon(Icons.shopping_cart),
-            ),
-            builder: (ctx, cart, child) => Badge(
-              value: cart.itemsCount.toString(),
-              child: child!,
-            ),
-          ),
-        ],
       ),
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
